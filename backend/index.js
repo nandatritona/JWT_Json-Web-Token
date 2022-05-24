@@ -1,5 +1,6 @@
 import Express from "express";
 import db from "./config/Database.js";
+import router from "./routes/index.js";
 // import Users from "./models/UserModel.js";
 
 const app = Express();
@@ -12,5 +13,9 @@ try {
 } catch (error) {
     console.error(error);
 }
+
+app.use(Express.json());
+
+app.use(router);
 
 app.listen(5000, () => console.log("Server started on port 5000"));
