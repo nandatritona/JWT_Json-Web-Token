@@ -83,3 +83,24 @@ export const Login = async (req, res) => {
         res.status(404).json("Email not found");
     }
 }
+
+export const Logout = async (req, res) => {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.sendStatus(204);
+
+    const user = await Users.findAll({
+      where: {
+        refresh_token: refreshToken,
+      },
+    });
+
+    if (!user[0]) return res.sendStatus(204);
+
+    const userid = user[0].id;
+    await Users.update({ refresh_token: null }, {
+        where: { id: userid },
+    });
+
+    res.clearCookie("refreshToken");
+    return res.sendStatus(200);
+}
