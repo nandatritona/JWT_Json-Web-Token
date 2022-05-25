@@ -1,0 +1,6 @@
+Depedenci for frontend by React JS
+
+1. react-router-dom (for routing).
+2. axios (for making API/http requests).
+3. bulma (for styling).
+4. jwt-decode (for decoding jwt token).
