@@ -1,2 +1,17 @@
 npm install express mysql2 sequelize jsonwebtoken dotenv bcrypt cookie-parser cors
-npm install -g nodemon => untuk menjalankan server secara otomatis
+npm install -g nodemon => install secara global.
+nodemon index.js => untuk menjalankan server secara otomatis
+----------------------------------------------------------------------------------------
+jika nodemon note respon install ulang saja semua package yang di install.
+
+# 👇️ delete node_modules and package-lock.json
+rm -rf node_modules
+rm -f package-lock.json
+
+# 👇️ clean npm cache
+npm cache clean --force
+
+npm install
+
+npm install bcrypt@latest
+-----------------------------------------------------------------------------------------------

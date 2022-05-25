@@ -1,14 +1,16 @@
 import Users from "../models/UserModel.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const getUsers = async (req, res) => {
+    //  Error Handling
     try {
-        const users = await Users.findAll();
-        // res.send(users);
-        res.json(users)
+      const users = await Users.findAll();
+      // res.send(users);
+      res.json(users);
     } catch (error) {
-        console.log(error);
-        // res.status(500).send(error);
+      console.log(error);
+      // res.status(500).send(error);
     }
 }
 
@@ -22,8 +24,8 @@ export const Register = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, salt);
     try {
         const user = await Users.create({
-            name: name,
-            email: email,
+            name,
+            email,
             password: hashPassword,
         });
         res.json("Register Success");

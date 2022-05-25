@@ -1,9 +1,11 @@
-import Express from "express";
+import express from "express";
+import dotenv from "dotenv";
 import db from "./config/Database.js";
 import router from "./routes/index.js";
 // import Users from "./models/UserModel.js";
+dotenv.config();
 
-const app = Express();
+const app = express();
 
 try {
     await db.authenticate();
@@ -14,7 +16,7 @@ try {
     console.error(error);
 }
 
-app.use(Express.json());
+app.use(express.json());
 
 app.use(router);
 
